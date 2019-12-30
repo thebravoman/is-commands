@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source "http://185.80.1.51"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Declare your gem's dependencies in is-commands.gemspec.

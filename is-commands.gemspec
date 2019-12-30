@@ -31,4 +31,9 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "is-core", "~> 6.0.0.pre.66"
   spec.add_development_dependency "is-core", "~> 6.0.0.pre.66"
+
+  spec.add_development_dependency "teaspoon-jasmine"
+  spec.add_development_dependency "selenium-webdriver"
+  spec.add_development_dependency 'spring-commands-teaspoon'
+  spec.add_development_dependency 'coffee-script'
 end
