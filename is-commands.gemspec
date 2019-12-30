@@ -29,8 +29,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "sqlite3"
 
-  spec.add_dependency "is-core", "~> 6.0.0.pre.66"
-  spec.add_development_dependency "is-core", "~> 6.0.0.pre.66"
+  spec.add_dependency "is-core", "~> 6.0.0.pre.68"
+  spec.add_development_dependency "is-core", "~> 6.0.0.pre.68"
 
   spec.add_dependency "is-gcc_tools", ">= 1.2.7", "< 2.0"
   spec.add_development_dependency "is-gcc_tools", ">= 1.2.7", "< 2.0"

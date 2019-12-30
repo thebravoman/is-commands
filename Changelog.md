@@ -12,3 +12,8 @@ Fixed for any bug fixes.
 Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
+
+## [1.0.0] - 2019-12-30
+
+### Added
+- initially moving from is-core to is-commands repo

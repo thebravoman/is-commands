@@ -1,8 +1,10 @@
 # Is::Commands
-Short description and motivation.
+Commands framework for Axles IS. See {@link IS.Commands}
 
 ## Usage
-How to use my plugin.
+```html
+<script src=".../ext/commands/register_commands"> </script>
+```
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -20,9 +22,3 @@ Or install it yourself as:
 ```bash
 $ gem install is-commands
 ```
-
-## Contributing
-Contribution directions go here.
-
-## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
