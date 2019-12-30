@@ -1,13 +1,7 @@
-//= require is_dependencies
-//= require is
-//= require core/extension
-//= require core/is_core
 //= require ext/commands/commands
 //= require ext/commands/history
 //= require ext/commands/step_command
 //= require ext/commands/executed_event
-//= require protects
-
 describe("IS.Commands.History", function() {
 	
 	class DummyCommand extends IS.Commands.StepCommand {
@@ -44,21 +38,21 @@ describe("IS.Commands.History", function() {
 		this.dummyListener = new DummyListener();
 		const ext = [
 			IS.ExtensionDef.CreateByExtensionConf({
-				extension: this.commandsHistory,
-				events: {
-					commandsExecuted: {
-						class: Object
+				"extension": this.commandsHistory,
+				"events": {
+					"commandsExecuted": {
+						"class": Object
 					}
 				}
-			}),
+			}, "dev"),
 			IS.ExtensionDef.CreateByExtensionConf({
-				extension: this.dummyListener,
-				events: {
-					commandsExecuted: {
-						receivesWith: this.dummyListener.onCommandsExecuted 
+				"extension": this.dummyListener,
+				"events": {
+					"commandsExecuted": {
+						"receivesWith": this.dummyListener.onCommandsExecuted 
 					} 
 				}
-			})
+			}, "dev")
 		]
 		this.isCore = new IS.Core(ext);
 		this.isCore.init();

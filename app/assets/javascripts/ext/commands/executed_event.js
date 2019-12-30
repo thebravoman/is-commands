@@ -1,3 +1,4 @@
+//= require ext/commands/commands
 /**
  * Data object for when the event of 'commandsExecuted' has occurred.
  *

@@ -3,6 +3,7 @@ PATH
   specs:
     is-commands (0.1.0)
       is-core (~> 6.0.0.pre.66)
+      is-gcc_tools (>= 1.2.7, < 2.0)
       rails (~> 5.2.4, >= 5.2.4.1)
 
 GEM
@@ -71,6 +72,8 @@ GEM
       rails (>= 5.0)
       sprockets (~> 3.7)
       sprockets-rails
+    is-gcc_tools (1.2.7)
+      rails (~> 5.1)
     loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -151,6 +154,7 @@ DEPENDENCIES
   coffee-script
   is-commands!
   is-core (~> 6.0.0.pre.66)
+  is-gcc_tools (>= 1.2.7, < 2.0)
   selenium-webdriver
   spring-commands-teaspoon
   sqlite3

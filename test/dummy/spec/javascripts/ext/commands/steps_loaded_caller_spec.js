@@ -1,14 +1,6 @@
-//= require is
-//= require core/extension
-//= require core/is_core
-//= require util/tree_util
-//= require ext/steps-tree/step_data
-//= require ext/steps-tree/loaded_event
-//= require ext/global-iterator/ready_event
 //= require ext/commands/step_command
 //= require ext/commands/steps_loaded_caller
 //= require ext/commands/executed_event
-//= require protects
 describe("IS.Commands.StepsLoadedCaller",function() {
 
 	class DummyStepsLoadedCallerExtension extends IS.Extension {
@@ -40,39 +32,39 @@ describe("IS.Commands.StepsLoadedCaller",function() {
 			'extension': this.extension1,
 			'events': {
 				'stepsTreeLoaded': {
-					receivesWith: this.extension1.onStepsTreeLoaded,
-					class: Object
+					"receivesWith": this.extension1.onStepsTreeLoaded,
+					"class": Object
 				},
 				'commandsExecuted': {
-					receivesWith: this.extension1.onCommandsExecuted,
-					class: Object
+					"receivesWith": this.extension1.onCommandsExecuted,
+					"class": Object
 				},
 				'iteratorReady': {
-					class: Object
+					"class": Object
 				}
 			},
-		})
+		}, "dev")
 		this.extConf2 = IS.ExtensionDef.CreateByExtensionConf({
 			'extension': this.extension2,
 			'events': {
 				'stepsTreeLoaded':{
-					receivesWith: this.extension2.onStepsTreeLoaded
+					"receivesWith": this.extension2.onStepsTreeLoaded
 				},
 				'iteratorReady': {
-					receivesWith: this.extension2.onIteratorReady
+					"receivesWith": this.extension2.onIteratorReady
 				},
 			}
-		})
+		}, "dev")
 
 		this.callerExtension = new IS.Commands.StepsLoadedCaller()
 		this.extConf3 = IS.ExtensionDef.CreateByExtensionConf({
 			'extension': this.callerExtension,
 			'events': {
 				'commandsExecuted': {
-					receivesWith: this.callerExtension.onCommandsExecuted
+					"receivesWith": this.callerExtension.onCommandsExecuted
 				} 
 			}
-		})
+		}, "dev")
 		
 		this.isCore = new IS.Core([this.extConf1,this.extConf2, this.extConf3]);
 		this.isCore.init();

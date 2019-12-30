@@ -1,3 +1,4 @@
+//= require ext/commands/commands
 /**
  * <p>When this extension receives a 'commandsExecuted' it will check all the extensions
  * that are listening for 'stepsTreeLoaded' and if they are not listening 

@@ -1,3 +1,5 @@
+//= require gcc/tools
+//= require ext/commands/commands
 /**
  * <p>IS.Commands.History is an extension providing the service for keeping the history of executed commands and being 
  * able to undo/redo those commands. You can ask the service to execute any subclass of {@link IS.Commands.StepCommand}.</p> 
@@ -76,6 +78,8 @@ IS.Commands.History = class extends IS.Extension {
 		 * @type {Array<Array<IS.Commands.StepCommand>>}
 		 */
 		this._commandArrays;
+
+		IS.GCC.Tools.OverrideMethod(IS.Extension.prototype, 'init', IS.Commands.History.prototype)
 	}
 
 	/**
