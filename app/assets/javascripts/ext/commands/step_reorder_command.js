@@ -1,3 +1,4 @@
+//= require ext/steps-tree/step_data
 //= require ext/commands/step_command
 /**
  * Command for reordering a step in the step tree. You can place the step under a new parent on a specified

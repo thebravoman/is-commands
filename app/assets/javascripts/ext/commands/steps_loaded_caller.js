@@ -1,3 +1,4 @@
+//= require ext/steps-tree/loaded_event
 //= require ext/commands/commands
 /**
  * <p>When this extension receives a 'commandsExecuted' it will check all the extensions

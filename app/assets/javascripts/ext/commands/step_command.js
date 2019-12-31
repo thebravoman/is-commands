@@ -1,3 +1,4 @@
+//= require ext/steps-tree/step_data
 //= require ext/commands/commands
 /**
  * Base class for commands that are changing the steps. Comands could be executed and then redu/undo could be called on them

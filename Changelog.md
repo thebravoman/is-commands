@@ -13,6 +13,11 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [1.0.3] - 2019-12-31
+
+### Fixed
+- [steps-tree]  Depending on is-core 6.0.0.pre.77 that has no steps-tree extension in it and using the steps-tree extension from is-steps_tree 1.0.2
+
 ## [1.0.2] - 2019-12-31
 
 ### Fixed
