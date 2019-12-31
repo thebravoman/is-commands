@@ -11,11 +11,11 @@ describe("IS.Commands.StepsLoadedCaller",function() {
 		
 		onStepsTreeLoaded() {
 			this.stepsTreeLoaded = DummyStepsLoadedCallerExtension.ORDER++;
-			this.getCore().scheduleNotify({'iteratorReady': new IS.GlobalIterator.ReadyEvent(null, null)})
+			this.getCore().scheduleNotify({'event2': new Object()})
 		}
 
-		onIteratorReady() {
-			this.iteratorReady = DummyStepsLoadedCallerExtension.ORDER++;
+		onEvent2() {
+			this.event2 = DummyStepsLoadedCallerExtension.ORDER++;
 		}
 
 		onCommandsExecuted() {
@@ -39,7 +39,7 @@ describe("IS.Commands.StepsLoadedCaller",function() {
 					"receivesWith": this.extension1.onCommandsExecuted,
 					"class": Object
 				},
-				'iteratorReady': {
+				'event2': {
 					"class": Object
 				}
 			},
@@ -50,8 +50,8 @@ describe("IS.Commands.StepsLoadedCaller",function() {
 				'stepsTreeLoaded':{
 					"receivesWith": this.extension2.onStepsTreeLoaded
 				},
-				'iteratorReady': {
-					"receivesWith": this.extension2.onIteratorReady
+				'event2': {
+					"receivesWith": this.extension2.onEvent2
 				},
 			}
 		}, "dev")

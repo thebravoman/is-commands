@@ -13,6 +13,11 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [1.0.1] - 2019-12-31
+
+### Fixed
+- removing dependency in IS.GlobalIterator in the specs
+
 ## [1.0.0] - 2019-12-30
 
 ### Added
