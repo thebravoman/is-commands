@@ -13,6 +13,29 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [1.0.2] - 2019-12-31
+
+### Fixed
+- when registering events they should not be quoted.
+
+Should be this:
+```
+            triedMoveIterator: {
+                "class": IS.GlobalIterator.TriedMoveEvent,
+                "receivesWith": extensionInstance.onTriedMoveIterator,
+                "apiName": 'triedMoveIterator'
+            }
+```
+
+Instead of this:
+```
+            "triedMoveIterator": {
+                "class": IS.GlobalIterator.TriedMoveEvent,
+                "receivesWith": extensionInstance.onTriedMoveIterator,
+                "apiName": 'triedMoveIterator'
+            }
+```
+
 ## [1.0.1] - 2019-12-31
 
 ### Fixed

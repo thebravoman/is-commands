@@ -8,7 +8,7 @@ IS.AxlesIS.GetInstance().addExtension(() => {
 	const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
 	    "extension": extension,
 	    "events": {
-	    	"commandsExecuted": {
+	    	commandsExecuted: {
 	    		"class": IS.Commands.ExecutedEvent,
 	    		"broadcasts": true,
 	    		"apiName": 'commandsExecuted'
