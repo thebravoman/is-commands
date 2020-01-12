@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    is-commands (1.0.3)
-      is-core (~> 6.0.0.pre.77)
+    is-commands (1.0.5)
+      is-core (~> 6.0.0.pre.84)
       is-gcc_tools (>= 1.2.7, < 2.0)
       is-steps_tree (>= 1.0.2, < 2.0)
       rails (~> 5.2.4, >= 5.2.4.1)
@@ -65,17 +65,17 @@ GEM
     execjs (2.7.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.7.0)
+    i18n (1.8.1)
       concurrent-ruby (~> 1.0)
-    is-core (6.0.0.pre.77)
+    is-core (6.0.0.pre.84)
       mustache (~> 1.0)
       mustache-js-rails
       rails (>= 5.0)
       sprockets (~> 3.7)
       sprockets-rails
-    is-gcc_tools (1.2.7)
+    is-gcc_tools (1.2.8)
       rails (~> 5.1)
-    is-steps_tree (1.0.2)
+    is-steps_tree (1.1.1)
       is-core (~> 6.0.0.pre.77)
       is-gcc_tools (~> 1.0)
       rails (~> 5.2.4, >= 5.2.4.1)
@@ -90,14 +90,14 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.13.0)
+    minitest (5.14.0)
     mustache (1.1.1)
     mustache-js-rails (3.1.0.1)
       railties (>= 3.1)
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
-    rack (2.0.8)
+    rack (2.1.1)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.1)
@@ -158,7 +158,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   is-commands!
-  is-core (~> 6.0.0.pre.77)
+  is-core (~> 6.0.0.pre.84)
   is-gcc_tools (>= 1.2.7, < 2.0)
   is-steps_tree (>= 1.0.2, < 2.0)
   selenium-webdriver

@@ -20,7 +20,7 @@
  * @example 
  * The extension is registered generally as:
  * 
- * IS.AxlesIS.GetInstance().addExtension(() => {
+ * IS.AxlesIS.GetInstance().addExtensionDefs(() => {
  * const extension = new IS.Commands.History();
  * const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
  * 	extension: extension,
@@ -28,7 +28,7 @@
  * 			type: "com.axlessoft.ai3d.is.commands.history"
  * 		}]
  * 	});
- * 	return extensionDef;
+ * 	return [extensionDef];
  * })
  *
  * @example
@@ -43,7 +43,7 @@
  * @example
  * Register to receive for commandsExecuted event as
  * 
- * IS.AxlesIS.GetInstance().addExtension(() => {
+ * IS.AxlesIS.GetInstance().addExtensionDefs(() => {
  * const extension = new MyExtension();
  * const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
  * 	extension: extension,
@@ -53,7 +53,7 @@
  * 			}
  * 		}
  * 	});
- * 	return extensionDef;
+ * 	return [extensionDef];
  * })
  * 
  * @see  IS.Commands.ExecutedEvent

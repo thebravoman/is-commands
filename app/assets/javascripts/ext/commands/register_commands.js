@@ -3,10 +3,11 @@
 //= require ext/commands/history
 //= require ext/commands/executed_event
 //= require ext/commands/steps_loaded_caller
-IS.AxlesIS.GetInstance().addExtension(() => {
-	const extension = new IS.Commands.History();
-	const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
-	    "extension": extension,
+IS.AxlesIS.GetInstance().addExtensionDefs(() => {
+	const extensionDefs = []
+	const historyExtension = new IS.Commands.History();
+	extensionDefs.push(IS.ExtensionDef.CreateByExtensionConf({
+	    "extension": historyExtension,
 	    "events": {
 	    	commandsExecuted: {
 	    		"class": IS.Commands.ExecutedEvent,
@@ -17,19 +18,16 @@ IS.AxlesIS.GetInstance().addExtension(() => {
 	    "services": [{
 	    	"type": "com.axlessoft.ai3d.is.commands.history"
 	    }]
-	}, "dev");
-	return extensionDef;
-})
+	}, "dev"));
 
-IS.AxlesIS.GetInstance().addExtension(() => {
-	const extension = new IS.Commands.StepsLoadedCaller();
-	const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
-	    "extension": extension,
+	const reloadExtension = new IS.Commands.StepsLoadedCaller();
+	extensionDefs.push(IS.ExtensionDef.CreateByExtensionConf({
+	    "extension": reloadExtension,
 	    "events": {
 	    	"commandsExecuted": {
-	    		"receivesWith": extension.onCommandsExecuted
+	    		"receivesWith": reloadExtension.onCommandsExecuted
 	    	} 
 	    }
-	}, "dev");
-	return extensionDef;
+	}, "dev"));
+	return extensionDefs;
 })

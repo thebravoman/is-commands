@@ -13,6 +13,16 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [1.0.5] - 2020-01-12
+
+### Changed
+- [core] Migrating to is-core-6.0.0.pre.84 that provides {@link IS.AxlesIS#addExtensionDefs}
+
+## [1.0.4] - 2020-01-12
+
+### Changed
+- [core] Migrating to is-core-6.0.0.pre.83 that provides {@link IS.AxlesIS#addExtensionDef}
+
 ## [1.0.3] - 2019-12-31
 
 ### Fixed

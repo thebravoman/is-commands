@@ -1,6 +1,6 @@
 {
-    "is-commands-README": {
-        "title": "is-commands-Tutorials and Readme",
+    "is-commands": {
+        "title": "is-commands",
         "children": {
             "tutorial-50-commands-framework": {
                 "title": "Commands Framework - editing Steps"
