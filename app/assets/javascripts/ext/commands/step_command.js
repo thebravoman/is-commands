@@ -18,6 +18,12 @@ IS.Commands.StepCommand = class {
 		 * @type {IS.StepsTree.StepData}
 		 */
 		this._step= step;
+
+    /**
+     * @private
+     * @type {IS.Commands.Deltas.StepDelta}
+     */
+    this._delta;
 	}
 
 	/**
@@ -51,4 +57,20 @@ IS.Commands.StepCommand = class {
 	getStep() {
 		return this._step;
 	}
+
+  /**
+   * @protected
+   */
+  generateDelta() {
+  }
+
+  /**
+   * Returns the delta representing the changes made to the structure by this command
+   *
+   * @export
+   * @return {IS.Commands.Deltas.StepDelta}
+   */
+  getDelta() {
+    return this._delta;
+  }
 }

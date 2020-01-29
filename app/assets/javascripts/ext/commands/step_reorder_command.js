@@ -1,5 +1,6 @@
 //= require ext/steps-tree/step_data
 //= require ext/commands/step_command
+
 /**
  * Command for reordering a step in the step tree. You can place the step under a new parent on a specified
  * position in the parent childrens array. To change the order in the same parent pass the new position 
@@ -29,23 +30,24 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
 		 * @type {IS.StepsTree.StepData}
 		 */
 		this._newParent = newParent;
+
+    /**
+     * @private
+     * @type {IS.StepsTree.StepData}
+     */
+    this._oldParent;
+
 		/**
 		 * @private
 		 * @type {number}
 		 */
-		this._position = position;
+		this._newPosition = position;
 
 		/**
 		 * @private
 		 * @type {number}
 		 */
 		this._oldPosition;
-
-		/**
-		 * @private
-		 * @type {IS.StepsTree.StepData}
-		 */
-		this._oldParent;
 	}
 
 	/**
@@ -54,21 +56,23 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
 	execute() {
 		this._oldPosition = this.getStep().parent.children.indexOf(this.getStep())
 		this._oldParent = this.getStep().parent;
-		this.toggleParent(this._newParent, this._position);
+		this.redo();
 	}
 
 	/**
 	 * @override
 	 */
 	redo() {
-		this.toggleParent(this._newParent, this._position);
+		this.toggleParent(this._newParent, this._newPosition);
+    this.generateDelta(this._newParent, this._newPosition);
 	}
 
 	/**
 	 * @override
 	 */
 	undo() {
-		this.toggleParent(this._oldParent, this._oldPosition)
+		this.toggleParent(this._oldParent, this._oldPosition);
+    this.generateDelta(this._oldParent, this._oldPosition);
 	}
 
 	/**
@@ -82,4 +86,17 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
     this.getStep().parent=newParent;
 	}
 
+  /**
+   * @override
+   * @private
+   * @param {IS.StepsTree.StepData} newParent
+   * @param {number} newPosition
+   */
+  generateDelta(newParent, newPosition) {
+    this._delta = new IS.Commands.Deltas.StepReorderDelta(
+      this.getStep(),
+      newParent,
+      newPosition
+      );
+  }
 }
