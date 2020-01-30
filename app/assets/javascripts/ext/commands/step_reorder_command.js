@@ -23,9 +23,8 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
 	 */
 	constructor(step, newParent, position) {
 		super(step);
-		IS.ErrorsUtil.AssertNotNull(step)
-		IS.ErrorsUtil.AssertNotNull(step.parent)
-		IS.ErrorsUtil.AssertNotNull(newParent)
+		IS.ErrorsUtil.AssertNotNull(step.parent);
+		IS.ErrorsUtil.AssertNotNull(newParent);
 		/**
 		 * @private
 		 * @type {IS.StepsTree.StepData}
@@ -55,17 +54,18 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
 	 * @override
 	 */
 	execute() {
-		this._oldPosition = this.getStep().parent.children.indexOf(this.getStep())
+		this._oldPosition = this.getStep().parent.children.indexOf(this.getStep());
 		this._oldParent = this.getStep().parent;
-		this.redo();
+
+    this.toggleParent(this._newParent, this._newPosition);
+    this.generateDelta(this._newParent, this._newPosition);
 	}
 
 	/**
 	 * @override
 	 */
 	redo() {
-		this.toggleParent(this._newParent, this._newPosition);
-    this.generateDelta(this._newParent, this._newPosition);
+    this.execute();
 	}
 
 	/**
@@ -90,7 +90,7 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
   /**
    * @override
    *
-   * @param {IS.StepsTree.StepData} newParent
+   * @param {IS.StepsTree.StepData|undefined|null} newParent
    * @param {number} newPosition
    */
   generateDelta(newParent, newPosition) {

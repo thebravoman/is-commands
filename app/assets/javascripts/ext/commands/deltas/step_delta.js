@@ -11,11 +11,12 @@ IS.Commands.Deltas.StepDelta = class {
 
   /**
    * @param {IS.StepsTree.StepData} step
-   * @param {IS.StepsTree.StepData} parent
+   * @param {IS.StepsTree.StepData|undefined|null} parent
    * @param {number} position
    */
   constructor(step, parent, position) {
-
+    IS.ErrorsUtil.AssertNotNull(step);
+    // IS.ErrorsUtil.AssertNotNull(position);
     /**
      * @private
      * @type {IS.StepsTree.StepData}
@@ -24,7 +25,7 @@ IS.Commands.Deltas.StepDelta = class {
 
     /**
      * @private
-     * @type {IS.StepsTree.StepData}
+     * @type {IS.StepsTree.StepData|undefined|null}
      */
     this._parent = parent;
 

@@ -15,6 +15,7 @@ IS.Commands.StepCommand = class {
 	 * @param  {IS.StepsTree.StepData} step
 	 */
 	constructor(step) {
+    IS.ErrorsUtil.AssertNotNull(step);
 		/**
 		 * @private
 		 * @type {IS.StepsTree.StepData}
@@ -63,7 +64,7 @@ IS.Commands.StepCommand = class {
   /**
    * @protected
    *
-   * @param {IS.StepsTree.StepData} newParent
+   * @param {IS.StepsTree.StepData|undefined|null} newParent
    * @param {number} newPosition
    */
   generateDelta(newParent, newPosition) {

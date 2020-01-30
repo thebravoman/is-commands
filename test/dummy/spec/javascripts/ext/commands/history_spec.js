@@ -6,8 +6,8 @@ describe("IS.Commands.History", function() {
 	
 	class DummyCommand extends IS.Commands.StepCommand {
 
-		constructor(){ 
-			super();
+		constructor(step){
+			super(step);
 		}
 
 		execute() {
@@ -57,8 +57,12 @@ describe("IS.Commands.History", function() {
 		this.isCore = new IS.Core(ext);
 		this.isCore.init();
 
-		this.command1 = new DummyCommand();
-		this.command2 = new DummyCommand();
+    this.step = {
+      "name": "root"
+    };
+
+		this.command1 = new DummyCommand(this.step);
+		this.command2 = new DummyCommand(this.step);
 		DummyCommand.ORDER = 0;
 	})
 
@@ -88,7 +92,7 @@ describe("IS.Commands.History", function() {
 		});
 
 		it("replaces the undone commands with the second commands and the undone can no longer be redone", function(){
-			const command3 = new DummyCommand();
+			const command3 = new DummyCommand(this.step);
 			this.commandsHistory.undo();
 			this.commandsHistory.execute([command3])
 
