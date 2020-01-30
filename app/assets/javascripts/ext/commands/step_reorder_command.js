@@ -1,5 +1,6 @@
 //= require ext/steps-tree/step_data
 //= require ext/commands/step_command
+//= require ext/commands/deltas/step_reorder_delta
 
 /**
  * Command for reordering a step in the step tree. You can place the step under a new parent on a specified
@@ -88,15 +89,17 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
 
   /**
    * @override
-   * @private
+   *
    * @param {IS.StepsTree.StepData} newParent
    * @param {number} newPosition
    */
   generateDelta(newParent, newPosition) {
-    this._delta = new IS.Commands.Deltas.StepReorderDelta(
+    const newDelta = new IS.Commands.Deltas.StepReorderDelta(
       this.getStep(),
       newParent,
       newPosition
       );
+
+    this.setDelta(newDelta);
   }
 }

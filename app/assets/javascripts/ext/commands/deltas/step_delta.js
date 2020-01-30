@@ -20,19 +20,19 @@ IS.Commands.Deltas.StepDelta = class {
      * @private
      * @type {IS.StepsTree.StepData}
      */
-    this._step;
+    this._step = step;
 
     /**
      * @private
      * @type {IS.StepsTree.StepData}
      */
-    this._parent;
+    this._parent = parent;
 
     /**
      * @private
      * @type {number}
      */
-     this._position;
+     this._position = position;
   }
 
   /**

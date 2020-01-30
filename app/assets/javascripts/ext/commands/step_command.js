@@ -1,5 +1,7 @@
 //= require ext/steps-tree/step_data
 //= require ext/commands/commands
+//= require ext/commands/deltas/step_delta
+
 /**
  * Base class for commands that are changing the steps. Comands could be executed and then redu/undo could be called on them
  * 
@@ -60,8 +62,11 @@ IS.Commands.StepCommand = class {
 
   /**
    * @protected
+   *
+   * @param {IS.StepsTree.StepData} newParent
+   * @param {number} newPosition
    */
-  generateDelta() {
+  generateDelta(newParent, newPosition) {
   }
 
   /**
@@ -72,5 +77,13 @@ IS.Commands.StepCommand = class {
    */
   getDelta() {
     return this._delta;
+  }
+
+  /**
+   *  @protected
+   *  @param {IS.Commands.Deltas.StepDelta} delta
+   */
+  setDelta(delta) {
+    this._delta = delta;
   }
 }
