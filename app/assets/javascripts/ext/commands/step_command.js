@@ -11,13 +11,13 @@
  */
 IS.Commands.StepCommand = class {
   /**
-   * @param  {IS.StepsTree.StepData} step
+   * @param  {!IS.StepsTree.StepData} step
    */
   constructor(step) {
     IS.ErrorsUtil.AssertNotNull(step);
     /**
      * @private
-     * @type {IS.StepsTree.StepData}
+     * @type {!IS.StepsTree.StepData}
      */
     this._step = step;
 
@@ -27,6 +27,13 @@ IS.Commands.StepCommand = class {
      */
     this._delta;
   }
+
+  /**
+   * Execute the command
+   *
+   * @export
+   */
+  execute() {}
 
   /**
    * Redo the command
@@ -44,19 +51,11 @@ IS.Commands.StepCommand = class {
 
   /**
    * @export
-   * @return {IS.StepsTree.StepData} the step over which the action is executed
+   * @return {!IS.StepsTree.StepData} the step over which the action is executed
    */
   getStep() {
     return this._step;
   }
-
-  /**
-   * @protected
-   *
-   * @param {IS.StepsTree.StepData|undefined|null} newParent
-   * @param {number} newPosition
-   */
-  generateDelta(newParent, newPosition) {}
 
   /**
    * Returns the delta representing the changes made to the structure by this command

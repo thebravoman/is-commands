@@ -1,6 +1,6 @@
 //= require ext/commands/commands
 
-if(!IS.Commands.Deltas) {
+if (!IS.Commands.Deltas) {
   /**
    * <h2>Overview</h2>
    * Deltas represent the changes made to the instructions using the IS.Commands framework.
@@ -8,5 +8,5 @@ if(!IS.Commands.Deltas) {
    * @author Dimitar Lukanov
    * @namespace
    */
-  IS.Commands.Deltas = {}
+  IS.Commands.Deltas = {};
 }

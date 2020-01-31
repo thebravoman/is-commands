@@ -3,12 +3,11 @@
 
 /**
  * Base class for deltas that are created when changing the steps with {@link IS.Commands.StepCommand} commands.
- * 
+ *
  * @export
  * @author  Dimitar Lukanov
  */
 IS.Commands.Deltas.StepDelta = class {
-
   /**
    * @param {IS.StepsTree.StepData} step
    * @param {IS.StepsTree.StepData|undefined|null} parent
@@ -33,7 +32,7 @@ IS.Commands.Deltas.StepDelta = class {
      * @private
      * @type {number}
      */
-     this._position = position;
+    this._position = position;
   }
 
   /**
@@ -59,4 +58,4 @@ IS.Commands.Deltas.StepDelta = class {
   getPosition() {
     return this._position;
   }
-}
+};

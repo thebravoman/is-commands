@@ -1,6 +1,6 @@
 //= require ext/commands/step_command
 //= require ext/commands/step_reorder_command
-describe("ChangeParentCommand", function() {
+describe("StepReorderCommand", function() {
   beforeEach(function() {
     const tree = {
       name: "root",
@@ -58,6 +58,12 @@ describe("ChangeParentCommand", function() {
         new IS.Commands.StepReorderCommand({}, {}, 1);
       }).toThrow(new Error("Null argument passed."));
     });
+
+    it("for when the position is null", function() {
+      expect(function() {
+        new IS.Commands.StepReorderCommand({}, {});
+      }).toThrow(new Error("Null argument passed."));
+    });
   });
 
   describe("execute", function() {
@@ -112,18 +118,10 @@ describe("ChangeParentCommand", function() {
       deltaIsCorrect(this.command, this.step, this.newParent, this.newPosition);
     });
   });
-
-  describe("generateDelta", function() {
-    beforeEach(function() {
-      this.command.generateDelta(this.rootStep, 0);
-    });
-    it("generates a new delta with the given parameters", function() {
-      deltaIsCorrect(this.command, this.step, this.rootStep, 0);
-    });
-  });
 });
 
 function deltaIsCorrect(command, step, parent, position) {
+  expect(command.getDelta()).toEqual(jasmine.any(IS.Commands.Deltas.StepReorderDelta));
   expect(command.getDelta().getStep()).toBe(step);
   expect(command.getDelta().getParent()).toBe(parent);
   expect(command.getDelta().getPosition()).toEqual(position);

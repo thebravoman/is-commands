@@ -16,14 +16,16 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
    * and each parent knows it's children (eg. responds to '.children').
    * 'step' must have a parent. Otherwise it is the rootNode and we can not move the rootNode in the trree itself.</p>
    *
-   * @param  {IS.StepsTree.StepData} step the step which parent should be changed
+   * @param  {!IS.StepsTree.StepData} step the step which parent should be changed
    * @param  {IS.StepsTree.StepData} newParent of the step. The parent could be the same which is useful for changing the order in the same parent.
-   * @param {number} position zero based position in which to put the new steps in the children of the parent.
+   * @param {!number} position zero based position in which to put the new steps in the children of the parent.
    */
   constructor(step, newParent, position) {
     super(step);
     IS.ErrorsUtil.AssertNotNull(step.parent);
     IS.ErrorsUtil.AssertNotNull(newParent);
+    IS.ErrorsUtil.AssertNotNull(position);
+
     /**
      * @private
      * @type {IS.StepsTree.StepData}
@@ -57,7 +59,9 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
     this._oldParent = this.getStep().parent;
 
     this.toggleParent(this._newParent, this._newPosition);
-    this.generateDelta(this._newParent, this._newPosition);
+
+    const newDelta = new IS.Commands.Deltas.StepReorderDelta(this.getStep(), this._newParent, this._newPosition);
+    this.setDelta(newDelta);
   }
 
   /**
@@ -72,7 +76,8 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
    */
   undo() {
     this.toggleParent(this._oldParent, this._oldPosition);
-    this.generateDelta(this._oldParent, this._oldPosition);
+    const newDelta = new IS.Commands.Deltas.StepReorderDelta(this.getStep(), this._oldParent, this._oldPosition);
+    this.setDelta(newDelta);
   }
 
   /**
@@ -84,17 +89,5 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
     this.getStep().parent.children.splice(this.getStep().parent.children.indexOf(this.getStep()), 1);
     newParent.children.splice(newPosition, 0, this.getStep());
     this.getStep().parent = newParent;
-  }
-
-  /**
-   * @override
-   *
-   * @param {IS.StepsTree.StepData|undefined|null} newParent
-   * @param {number} newPosition
-   */
-  generateDelta(newParent, newPosition) {
-    const newDelta = new IS.Commands.Deltas.StepReorderDelta(this.getStep(), newParent, newPosition);
-
-    this.setDelta(newDelta);
   }
 };

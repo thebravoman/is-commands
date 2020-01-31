@@ -7,5 +7,4 @@
  * @export
  * @author Dimitar Lukanov
  */
-IS.Commands.Deltas.StepDeleteDelta = class extends IS.Commands.Deltas.StepDelta {
-}
+IS.Commands.Deltas.StepDeleteDelta = class extends IS.Commands.Deltas.StepDelta {};
