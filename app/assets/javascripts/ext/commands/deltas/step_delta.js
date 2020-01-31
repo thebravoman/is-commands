@@ -10,12 +10,13 @@
 IS.Commands.Deltas.StepDelta = class {
   /**
    * @param {IS.StepsTree.StepData} step
-   * @param {IS.StepsTree.StepData|undefined|null} parent
+   * @param {IS.StepsTree.StepData} parent
    * @param {number} position
    */
   constructor(step, parent, position) {
     IS.ErrorsUtil.AssertNotNull(step);
-    // IS.ErrorsUtil.AssertNotNull(position);
+    IS.ErrorsUtil.AssertNotNull(parent);
+    IS.ErrorsUtil.AssertNotNull(position);
     /**
      * @private
      * @type {IS.StepsTree.StepData}
@@ -24,7 +25,7 @@ IS.Commands.Deltas.StepDelta = class {
 
     /**
      * @private
-     * @type {IS.StepsTree.StepData|undefined|null}
+     * @type {IS.StepsTree.StepData}
      */
     this._parent = parent;
 
@@ -38,6 +39,7 @@ IS.Commands.Deltas.StepDelta = class {
   /**
    * Returns the step we've modified
    * @export
+   * @return {IS.StepsTree.StepData}
    */
   getStep() {
     return this._step;
@@ -46,14 +48,22 @@ IS.Commands.Deltas.StepDelta = class {
   /**
    * Returns the parent we've modified
    * @export
+   * @return {IS.StepsTree.StepData}
    */
   getParent() {
     return this._parent;
   }
 
   /**
-   * Returns the position we've modified among the parents' children
+   * Returns the position we've modified among the parents' children. This could be:
+   * - the position of the step we want to remove
+   * - the position in which to put a new step in
+   * - the position we want to move an existing step to or from
+   *
+   * Check documentation of the specific deltas for what this position means
+   *
    * @export
+   * @return {number}
    */
   getPosition() {
     return this._position;

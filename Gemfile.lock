@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    is-commands (1.0.6)
+    is-commands (1.0.7)
       is-core (~> 6.0.0.pre.84)
       is-gcc_tools (>= 1.2.7, < 2.0)
       is-steps_tree (>= 1.0.2, < 2.0)
