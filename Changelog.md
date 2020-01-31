@@ -13,6 +13,10 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [1.0.6] - 2020-01-31
+### Added
+- [prettier] auto prettifying on build
+
 ## [1.0.5] - 2020-01-12
 
 ### Changed
