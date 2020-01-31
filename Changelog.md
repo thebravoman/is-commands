@@ -13,31 +13,47 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
-## [1.0.6] - 2020-01-31
+## [1.0.7] - 2020-01-31
+
 ### Added
+
+- Added the StepCreateCommand and StepDeleteCommand commands
+- Added a new namespace IS.Commands.Deltas
+- Added the StepCreateDelta, StepDeleteDelta and StepReorderDelta deltas
+- [Step Command] The step command now has a delta property, which can be read via the getDelta() method. Each child class of the StepCommand class generates a delta when it gets executed. The type of the delta depends on the command we're executing and what it does exactly. For example if we execute a StepDeleteCommand, that will generate a StepDeleteDelta, but if we undo a StepDeleteCommand that will generate a StepCreateDelta.
+
+## [1.0.6] - 2020-01-31
+
+### Added
+
 - [prettier] auto prettifying on build
 
 ## [1.0.5] - 2020-01-12
 
 ### Changed
+
 - [core] Migrating to is-core-6.0.0.pre.84 that provides {@link IS.AxlesIS#addExtensionDefs}
 
 ## [1.0.4] - 2020-01-12
 
 ### Changed
+
 - [core] Migrating to is-core-6.0.0.pre.83 that provides {@link IS.AxlesIS#addExtensionDef}
 
 ## [1.0.3] - 2019-12-31
 
 ### Fixed
-- [steps-tree]  Depending on is-core 6.0.0.pre.77 that has no steps-tree extension in it and using the steps-tree extension from is-steps_tree 1.0.2
+
+- [steps-tree] Depending on is-core 6.0.0.pre.77 that has no steps-tree extension in it and using the steps-tree extension from is-steps_tree 1.0.2
 
 ## [1.0.2] - 2019-12-31
 
 ### Fixed
+
 - when registering events they should not be quoted.
 
 Should be this:
+
 ```
             triedMoveIterator: {
                 "class": IS.GlobalIterator.TriedMoveEvent,
@@ -47,6 +63,7 @@ Should be this:
 ```
 
 Instead of this:
+
 ```
             "triedMoveIterator": {
                 "class": IS.GlobalIterator.TriedMoveEvent,
@@ -58,9 +75,11 @@ Instead of this:
 ## [1.0.1] - 2019-12-31
 
 ### Fixed
+
 - removing dependency in IS.GlobalIterator in the specs
 
 ## [1.0.0] - 2019-12-30
 
 ### Added
+
 - initially moving from is-core to is-commands repo
