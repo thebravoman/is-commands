@@ -21,14 +21,14 @@
  * The extension is registered generally as:
  *
  * IS.AxlesIS.GetInstance().addExtensionDefs(() => {
- * const extension = new IS.Commands.History();
- * const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
- *  extension: extension,
- *    services: [{
- *      type: "com.axlessoft.ai3d.is.commands.history"
- *    }]
- *  });
- *  return [extensionDef];
+ *   const extension = new IS.Commands.History();
+ *   const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
+ *     "extension": extension,
+ *     "services": [{
+ *       type: "com.axlessoft.ai3d.is.commands.history"
+ *     }]
+ *   });
+ *   return [extensionDef];
  * })
  *
  * @example
@@ -36,24 +36,24 @@
  *
  * const commandHistoryConf = scope.getCore().getExtensionDefsForService("com.axlessoft.ai3d.is.commands.history")[0]
  * if(commandHistoryConf) {
- *  const commandHistory= /** @type {IS.Commands.History} * (commandHistoryConf.extension);
- *  commandHistory.undo();
+ *   const commandHistory= /** @type {IS.Commands.History} *\/ (commandHistoryConf.extension);
+ *   commandHistory.undo();
  * }
  *
  * @example
  * Register to receive for commandsExecuted event as
  *
  * IS.AxlesIS.GetInstance().addExtensionDefs(() => {
- * const extension = new MyExtension();
- * const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
- *  extension: extension,
- *    events: {
- *      'commandsExecuted': {
- *        receivesWith: extension.onCommandsExecuted
- *      }
- *    }
- *  });
- *  return [extensionDef];
+ *   const extension = new MyExtension();
+ *   const extensionDef = IS.ExtensionDef.CreateByExtensionConf({
+ *     "extension": extension,
+ *     "events": {
+ *       "commandsExecuted": {
+ *         "receivesWith": extension.onCommandsExecuted
+ *       }
+ *     }
+ *   });
+ *   return [extensionDef];
  * })
  *
  * @see  IS.Commands.ExecutedEvent
