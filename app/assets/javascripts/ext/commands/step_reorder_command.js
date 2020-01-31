@@ -57,11 +57,7 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
   execute() {
     this._oldPosition = this.getStep().parent.children.indexOf(this.getStep());
     this._oldParent = this.getStep().parent;
-
     this.toggleParent(this._newParent, this._newPosition);
-
-    const newDelta = new IS.Commands.Deltas.StepReorderDelta(this.getStep(), this._newParent, this._newPosition);
-    this.setDelta(newDelta);
   }
 
   /**
@@ -76,8 +72,6 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
    */
   undo() {
     this.toggleParent(this._oldParent, this._oldPosition);
-    const newDelta = new IS.Commands.Deltas.StepReorderDelta(this.getStep(), this._oldParent, this._oldPosition);
-    this.setDelta(newDelta);
   }
 
   /**
@@ -89,5 +83,6 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
     this.getStep().parent.children.splice(this.getStep().parent.children.indexOf(this.getStep()), 1);
     newParent.children.splice(newPosition, 0, this.getStep());
     this.getStep().parent = newParent;
+    this.setDelta(new IS.Commands.Deltas.StepReorderDelta(this.getStep(), newParent, newPosition));
   }
 };

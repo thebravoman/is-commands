@@ -14,6 +14,10 @@ IS.Commands.ExecutedEvent = class {
    * @param {string} action the action of execute/undo/redo that was done on the commands in this event.
    */
   constructor(commands, action) {
+    IS.ErrorsUtil.AssertNotNull(commands);
+    IS.ErrorsUtil.AssertIsArray(commands);
+    IS.ErrorsUtil.AssertArrayWithInstances(commands, IS.Commands.StepCommand);
+
     /**
      * @private
      * @type {Array<IS.Commands.StepCommand>}

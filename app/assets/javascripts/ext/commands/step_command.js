@@ -68,8 +68,8 @@ IS.Commands.StepCommand = class {
   }
 
   /**
-   *  @protected
-   *  @param {IS.Commands.Deltas.StepDelta} delta
+   * @protected
+   * @param {IS.Commands.Deltas.StepDelta} delta
    */
   setDelta(delta) {
     this._delta = delta;
