@@ -14,7 +14,7 @@ IS.Commands.StepReorderCommand = class extends IS.Commands.StepCommand {
   /**
    * <p>The steps must be part of a tree where each node knows its parent (eg. responds to '.parent')
    * and each parent knows it's children (eg. responds to '.children').
-   * 'step' must have a parent. Otherwise it is the rootNode and we can not move the rootNode in the trree itself.</p>
+   * 'step' must have a parent. Otherwise it is the true root node and we can not move the true root node in the tree itself.</p>
    *
    * @param  {!IS.StepsTree.StepData} step the step which parent should be changed
    * @param  {IS.StepsTree.StepData} newParent of the step. The parent could be the same which is useful for changing the order in the same parent.
