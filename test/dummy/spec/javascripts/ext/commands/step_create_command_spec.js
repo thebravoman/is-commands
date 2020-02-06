@@ -111,6 +111,10 @@ function createsStepAndGeneratesDelta() {
     expect(findCreatedStep(this.parent, this.stepID)).not.toBeUndefined();
   });
 
+  it("creates the step with the correct parent", function() {
+    expect(this.command.getStep().parent).toBe(this.parent);
+  });
+
   itGeneratesACorrectDelta(IS.Commands.Deltas.StepCreateDelta);
 }
 

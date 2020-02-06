@@ -38,8 +38,10 @@ IS.Commands.StepCreateCommand = class extends IS.Commands.StepCommand {
    * @override
    */
   execute() {
-    this._parent.children.splice(this._position, 0, this._step);
-    const newDelta = new IS.Commands.Deltas.StepCreateDelta(this.getStep(), this._parent, this._position);
+    const step = this.getStep();
+    step.parent = this._parent;
+    this._parent.children.splice(this._position, 0, step);
+    const newDelta = new IS.Commands.Deltas.StepCreateDelta(step, this._parent, this._position);
     this.setDelta(newDelta);
   }
 
@@ -47,8 +49,10 @@ IS.Commands.StepCreateCommand = class extends IS.Commands.StepCommand {
    * @override
    */
   undo() {
+    const step = this.getStep();
+    step.parent = undefined;
     this._parent.children.splice(this._position, 1);
-    const newDelta = new IS.Commands.Deltas.StepDeleteDelta(this.getStep(), this._parent, this._position);
+    const newDelta = new IS.Commands.Deltas.StepDeleteDelta(step, this._parent, this._position);
     this.setDelta(newDelta);
   }
 
