@@ -13,6 +13,11 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [1.0.9] - 2020-02-06
+
+### Fixed
+- [StepCreateCommand] Fixed a bug where it wouldn't set the parent of the newly created step to the specified parent
+
 ## [1.0.8] - 2020-02-05
 
 ### Changed
