@@ -13,6 +13,11 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [1.0.10] - 2020-02-24
+
+### Fixed
+- [iom] dependent on iom
+
 ## [1.0.9] - 2020-02-06
 
 ### Fixed
