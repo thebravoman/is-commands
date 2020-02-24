@@ -16,11 +16,13 @@ Security to invite users to upgrade in case of vulnerabilities.
 ## [1.0.9] - 2020-02-06
 
 ### Fixed
+
 - [StepCreateCommand] Fixed a bug where it wouldn't set the parent of the newly created step to the specified parent
 
 ## [1.0.8] - 2020-02-05
 
 ### Changed
+
 - Now supports the true root node introduced by the is-steps_tree extension version 2.0.0
 
 ## [1.0.7] - 2020-01-31
