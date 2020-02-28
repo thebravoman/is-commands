@@ -62,12 +62,17 @@ describe("StepDeleteCommand", function() {
 
   describe("undo", function() {
     beforeEach(function() {
+      this.initialChildren = this.parent.children.slice();
       this.command.execute();
       this.command.undo();
     });
 
     it("returns the step to the parents children array", function() {
       expect(this.step.parent.children).toContain(this.step);
+    });
+
+    it("doesnt add any additional children to the parent (bugfix)", function() {
+      expect(this.step.parent.children).toEqual(this.initialChildren);
     });
 
     itGeneratesACorrectDelta(IS.Commands.Deltas.StepCreateDelta);

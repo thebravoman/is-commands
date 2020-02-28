@@ -12,8 +12,8 @@
 IS.Commands.StepCreateCommand = class extends IS.Commands.StepCommand {
   /**
    *
-   * @param  {!*} stepID the id of the new step
-   * @param  {!IS.StepsTree.StepData} parent parent step of the new step.
+   * @param {!string} stepID the id of the new step
+   * @param {!IS.StepsTree.StepData} parent parent step of the new step.
    * @param {!number} position zero based position in which to put the new steps in the children array of the parent step.
    */
   constructor(stepID, parent, position) {
@@ -24,7 +24,7 @@ IS.Commands.StepCreateCommand = class extends IS.Commands.StepCommand {
     super(new IS.StepsTree.StepData(stepID));
 
     /**
-     * @type {IS.StepsTree.StepData|undefined|null}
+     * @type {IS.StepsTree.StepData}
      */
     this._parent = parent;
 
@@ -50,7 +50,7 @@ IS.Commands.StepCreateCommand = class extends IS.Commands.StepCommand {
    */
   undo() {
     const step = this.getStep();
-    step.parent = undefined;
+    step.parent = null;
     this._parent.children.splice(this._position, 1);
     const newDelta = new IS.Commands.Deltas.StepDeleteDelta(step, this._parent, this._position);
     this.setDelta(newDelta);
