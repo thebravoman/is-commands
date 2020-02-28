@@ -13,6 +13,13 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [1.0.11] - 2020-02-28
+
+### Fixed
+- [Step Create Command] fixing gcc errors
+- [Step Delete Command] Fixing gcc errors and a bug where undoing the command would add an aditional child to the parent node
+- [Build] Adding js files which are not required by the register_commands file, so they also get compiled and we can catch warnings and errors earlier
+
 ## [1.0.10] - 2020-02-24
 
 ### Fixed
