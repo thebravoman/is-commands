@@ -13,6 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w(
 ext/commands/register_history
-ext/commands/register_steps_loaded_caller
-ext/commands/deltas/i_delta
 )

@@ -32,12 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "is-core", "~> 6.0.0.pre.84"
   spec.add_development_dependency "is-core", "~> 6.0.0.pre.84"
 
-  spec.add_dependency "is-iom"
-  spec.add_development_dependency "is-iom"
-
-  spec.add_dependency "is-steps_tree", ">= 2.0", "< 3.0"
-  spec.add_development_dependency "is-steps_tree", ">= 2.0", "< 3.0"
-  
   spec.add_dependency "is-gcc_tools", ">= 1.2.7", "< 2.0"
   spec.add_development_dependency "is-gcc_tools", ">= 1.2.7", "< 2.0"
 
