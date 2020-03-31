@@ -1,46 +1,30 @@
 # Overview
-Axles IS Commands framework is an extension of Axles IS. The goal of the Commands Framework is to provide a service for Extensions that are editing the IS.StepsTree.StepData tree. 
+Axles IS Commands framework is an extension of Axles IS. The goal of the Commands Framework is to provide a service for extensions to execute, redo or undo commands or arrays of commands easily and provide a blueprint for those commands.
 
 When the Commands Framework extension is available, it provides extensions with the ability to execute commands and record the order of their execution. This allows for a undo/redo functionallity, but more importantly it makes change logic decoupled and contained in small simple classes.
 
 # Define a command
-All commands must extend from {@link IS.Commands.StepCommand}
-
+All commands must extend the {@link IS.Commands.Command} class.
 ````
-class MyChangeCommand extends IS.Commands.StepCommand {
-    /**
-     * @param  {IS.StepsTree.StepData} step   the step on which the change is made
-     * @param  {Object} param1 your custom param1. There might be many because this is your command
-     * @param  {Object} param2 your custom param2 
-     */
-    constructor(step, param1,param2) {
-        super(step);
-        /**
-         * @private
-         * @type {Object}
-         */
-        this._param1 = param1
+//= require ext/commands/command
 
-        /**
-         * @private
-         * @type {Object}
-         */
-        this._param2 = param2
-    }
+class MyChangeCommand extends IS.Commands.Command {
+  ...
+  execute() {
+    ... execute the command
+  }
 
-    execute() {
-        ... execute the command
-    }
-    undo() {
-        ... undo the command
-    }
-    redo() {
-        ... redo the command
-    }
+  undo() {
+    ... undo the command
+  }
+
+  redo() {
+    ... redo the command
+  }
 }
 ````
 
-If you need to save some internal state to be ready for the undo you should do this in 'execute'. {@link IS.Commands.StepCommand#execute} is called only once, the first time a command is executed. From then on it is only {@link IS.Commands.StepCommand#undo} and {@link IS.Commands.StepCommand#redo}
+If you need to save some internal state to be ready for the undo you should do this in 'execute'. {@link IS.Commands.Command#execute} is called only once, the first time a command is executed. From then on it is only {@link IS.Commands.Command#undo} and {@link IS.Commands.Command#redo}
 
 # Create an instance of the command and execute it
 Consider you are listening inside of an {@link Extension} for an event from the user as in the example below where we are listening for a click event.

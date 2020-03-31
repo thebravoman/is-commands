@@ -1,9 +1,9 @@
 //= require ext/commands/commands
+//= require ext/commands/command
 //= require ext/commands/history
-//= require ext/commands/step_command
 //= require ext/commands/executed_event
 describe("IS.Commands.History", function() {
-  class DummyCommand extends IS.Commands.StepCommand {
+  class DummyCommand extends IS.Commands.Command {
     constructor(step) {
       super(step);
     }
@@ -71,8 +71,6 @@ describe("IS.Commands.History", function() {
 
   it("initializes position in the init method and not in the constructor because if in the constructor an error occurs that position is NAN. Don't know why yet", function() {
     const ch = new IS.Commands.History();
-    expect(ch._position).toEqual(undefined);
-    ch.init(null, null);
     expect(ch._position).toEqual(0);
   });
 

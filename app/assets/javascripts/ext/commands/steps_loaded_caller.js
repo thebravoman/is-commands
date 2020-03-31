@@ -1,5 +1,6 @@
-//= require ext/steps-tree/loaded_event
 //= require ext/commands/commands
+//= require ext/steps-tree/loaded_event
+//= require ext/commands/executed_event
 /**
  * <p>When this extension receives a 'commandsExecuted' it will check all the extensions
  * that are listening for 'stepsTreeLoaded' and if they are not listening

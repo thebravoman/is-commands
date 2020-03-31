@@ -12,11 +12,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 Rails.application.config.assets.precompile += %w(
-ext/commands/register_commands
-ext/commands/step_create_command
-ext/commands/step_delete_command
-ext/commands/step_reorder_command
-ext/commands/deltas/step_create_delta
-ext/commands/deltas/step_delete_delta
-ext/commands/deltas/step_reorder_delta
+ext/commands/register_history
+ext/commands/register_steps_loaded_caller
+ext/commands/deltas/i_delta
 )
