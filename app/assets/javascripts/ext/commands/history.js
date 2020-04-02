@@ -1,9 +1,9 @@
 //= require ext/commands/commands
-//= require ext/commands/command
+//= require ext/commands/i_command
 
 /**
  * <p>IS.Commands.History is an extension providing the service for keeping the history of executed commands and being
- * able to undo/redo those commands. You can ask the service to execute any class which is a subclass of {@link IS.Commands.Command}.</p>
+ * able to undo/redo those commands. You can ask the service to execute any class which implements the {@link IS.Commands.ICommand} interface.</p>
  *
  * <p>Axles IS Commands Framework thinks of Commands as simple atomic changes. It is possible to ask the {@link IS.Commands.History} to
  * execute an array of commands. This array of commands will be executed as one chunk. In this way a collection of commands
@@ -58,7 +58,7 @@
  * })
  *
  * @see  IS.Commands.ExecutedEvent
- * @see  IS.Commands.Command
+ * @see  IS.Commands.ICommand
  * @tutorial tutorial-50-commands-framework
  * @export
  * @author Kiril Mitov
@@ -75,21 +75,21 @@ IS.Commands.History = class extends IS.Extension {
 
     /**
      * @private
-     * @type {Array<Array<IS.Commands.Command>>}
+     * @type {Array<Array<IS.Commands.ICommand>>}
      */
     this._commandArrays = [];
   }
 
   /**
    * @export
-   * @param  {Array<IS.Commands.Command>} commands the array of commands to be executed. They will all be executed but this is considered on execution. On undo all of them will be undone.
+   * @param  {Array<IS.Commands.ICommand>} commands the array of commands to be executed. They will all be executed but this is considered on execution. On undo all of them will be undone.
    */
   execute(commands) {
     this._commandArrays = this._commandArrays.slice(0, this._position);
     this._commandArrays.push(commands);
     commands.forEach(x => x.execute());
     this._position++;
-    this.scheduleNotify(commands, "execute");
+    this.scheduleNotify(commands, IS.Commands.ICommand.ACTIONS.EXECUTE);
   }
 
   /**
@@ -103,7 +103,7 @@ IS.Commands.History = class extends IS.Extension {
     for (let i = commands.length - 1; i >= 0; i--) {
       commands[i].undo();
     }
-    this.scheduleNotify(commands, "undo");
+    this.scheduleNotify(commands, IS.Commands.ICommand.ACTIONS.UNDO);
   }
 
   /**
@@ -115,7 +115,7 @@ IS.Commands.History = class extends IS.Extension {
     const commands = this._commandArrays[this._position];
     commands.forEach(x => x.redo());
     this._position++;
-    this.scheduleNotify(commands, "redo");
+    this.scheduleNotify(commands, IS.Commands.ICommand.ACTIONS.REDO);
   }
 
   /**
@@ -139,6 +139,8 @@ IS.Commands.History = class extends IS.Extension {
    */
   scheduleNotify(commands, action) {
     const event = new IS.Commands.ExecutedEvent(commands, action);
-    this.getCore().scheduleNotify({ "commandsExecuted": event });
+    this.getCore().scheduleNotify({
+      "commandsExecuted": event
+    });
   }
 };

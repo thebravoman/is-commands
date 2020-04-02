@@ -4,27 +4,50 @@ Axles IS Commands framework is an extension of Axles IS. The goal of the Command
 When the Commands Framework extension is available, it provides extensions with the ability to execute commands and record the order of their execution. This allows for a undo/redo functionallity, but more importantly it makes change logic decoupled and contained in small simple classes.
 
 # Define a command
-All commands must extend the {@link IS.Commands.Command} class.
-````
-//= require ext/commands/command
+All commands must implement the {@link IS.Commands.ICommand} interface.
 
-class MyChangeCommand extends IS.Commands.Command {
+IMPORTANT NOTE: The rows which start with ? are optional. You would have to add them only if you're using google closure compiler.
+
+````
+//= require gcc/tools
+//= require ext/commands/i_command
+
+?/**
+? * @implements {IS.Commands.ICommand}
+? */
+class MyChangeCommand {
+
+  constructor() {
+    super();
+    ?IS.GCC.Tools.OverrideMethod(IS.Commands.ICommand.prototype, "execute", MyChangeCommand.prototype);
+    ?IS.GCC.Tools.OverrideMethod(IS.Commands.ICommand.prototype, "undo",  MyChangeCommand.prototype);
+    ?IS.GCC.Tools.OverrideMethod(IS.Commands.ICommand.prototype, "redo",  MyChangeCommand.prototype);
+  }
   ...
+  ?/**
+  ? * @override
+  ? */
   execute() {
     ... execute the command
   }
 
+  ?/**
+  ? * @override
+  ? */
   undo() {
     ... undo the command
   }
 
+  ?/**
+  ? * @override
+  ? */
   redo() {
     ... redo the command
   }
 }
 ````
 
-If you need to save some internal state to be ready for the undo you should do this in 'execute'. {@link IS.Commands.Command#execute} is called only once, the first time a command is executed. From then on it is only {@link IS.Commands.Command#undo} and {@link IS.Commands.Command#redo}
+If you need to save some internal state to be ready for the undo you should do this in 'execute'. {@link IS.Commands.ICommand#execute} is called only once, the first time a command is executed. From then on it is only {@link IS.Commands.ICommand#undo} and {@link IS.Commands.ICommand#redo}
 
 # Create an instance of the command and execute it
 Consider you are listening inside of an {@link Extension} for an event from the user as in the example below where we are listening for a click event.
