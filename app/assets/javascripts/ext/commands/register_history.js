@@ -16,7 +16,7 @@ IS.AxlesIS.GetInstance().addExtensionDefs(() => {
         },
         "services": [
           {
-            "type": "com.axlessoft.ai3d.is.commands.history"
+            "type": IS.Commands.History.SERVICE_TYPE
           }
         ]
       },

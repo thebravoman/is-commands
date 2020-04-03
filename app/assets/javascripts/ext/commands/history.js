@@ -144,3 +144,5 @@ IS.Commands.History = class extends IS.Extension {
     });
   }
 };
+
+IS.Commands.History.SERVICE_TYPE = "com.axlessoft.ai3d.is.commands.history";
