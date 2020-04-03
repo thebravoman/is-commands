@@ -5,11 +5,11 @@ set -e
 bundle exec rake app:is:pretty
 
 cd test/dummy
-# if [ -x "$(command -v xvfb-run)" ]; then
-#   xvfb-run -a bundle exec rake teaspoon
-# else
-#   bundle exec rake teaspoon
-# fi
+if [ -x "$(command -v xvfb-run)" ]; then
+  xvfb-run -a bundle exec rake teaspoon
+else
+  bundle exec rake teaspoon
+fi
 
 bundle exec rake is:gcc:sdk_compile[ext/commands/register_history,is-core]
 
