@@ -23,12 +23,3 @@ IS.Commands.ICommand.prototype.redo = function() {};
  * Undo the command
  */
 IS.Commands.ICommand.prototype.undo = function() {};
-
-/**
- * @enum {string}
- */
-IS.Commands.ICommand.ACTIONS = {
-  EXECUTE: "execute",
-  UNDO: "undo",
-  REDO: "redo"
-};

@@ -89,7 +89,7 @@ IS.Commands.History = class extends IS.Extension {
     this._commandArrays.push(commands);
     commands.forEach(x => x.execute());
     this._position++;
-    this.scheduleNotify(commands, IS.Commands.ICommand.ACTIONS.EXECUTE);
+    this.scheduleNotify(commands, IS.Commands.ExecutedEvent.ACTIONS.EXECUTE);
   }
 
   /**
@@ -103,7 +103,7 @@ IS.Commands.History = class extends IS.Extension {
     for (let i = commands.length - 1; i >= 0; i--) {
       commands[i].undo();
     }
-    this.scheduleNotify(commands, IS.Commands.ICommand.ACTIONS.UNDO);
+    this.scheduleNotify(commands, IS.Commands.ExecutedEvent.ACTIONS.UNDO);
   }
 
   /**
@@ -115,7 +115,7 @@ IS.Commands.History = class extends IS.Extension {
     const commands = this._commandArrays[this._position];
     commands.forEach(x => x.redo());
     this._position++;
-    this.scheduleNotify(commands, IS.Commands.ICommand.ACTIONS.REDO);
+    this.scheduleNotify(commands, IS.Commands.ExecutedEvent.ACTIONS.REDO);
   }
 
   /**

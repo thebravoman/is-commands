@@ -17,10 +17,7 @@ IS.Commands.ExecutedEvent = class {
   constructor(commands, action) {
     IS.ErrorsUtil.AssertNotNull(commands);
     IS.ErrorsUtil.AssertIsArray(commands);
-    this.assertArrayWithInterfaceImplementers(
-      /** @type {Array<!IS.Commands.ICommand>} */ (commands),
-      IS.Commands.ICommand
-    );
+    IS.ErrorsUtil.AssertObjectsImplementInterface(commands, IS.Commands.ICommand);
 
     /**
      * @private
@@ -50,29 +47,13 @@ IS.Commands.ExecutedEvent = class {
   getAction() {
     return this._action;
   }
+};
 
-  /**
-   * @private
-   * @param {Array<!Object>} arr
-   * @param {Function} interf
-   */
-  assertArrayWithInterfaceImplementers(arr, interf) {
-    const allObjectsImplementTheInterface = arr.every(obj => this.implementsInterface(obj, interf));
-
-    if (!allObjectsImplementTheInterface) {
-      throw new Error("Not all objects of the array implement the specified interface.");
-    }
-  }
-
-  /**
-   * @private
-   * @param {!Object} obj
-   * @param {Function} interf
-   * @return {boolean}
-   */
-  implementsInterface(obj, interf) {
-    return Object.getOwnPropertyNames(interf.prototype).every(property =>
-      Object.getPrototypeOf(obj).hasOwnProperty(property)
-    );
-  }
+/**
+ * @enum {string}
+ */
+IS.Commands.ExecutedEvent.ACTIONS = {
+  EXECUTE: "execute",
+  UNDO: "undo",
+  REDO: "redo"
 };

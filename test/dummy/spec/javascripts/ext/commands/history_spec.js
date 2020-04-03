@@ -85,7 +85,7 @@ describe("IS.Commands.History", function() {
     });
 
     it("schedules a notification with executed to listeners", function() {
-      expect(this.dummyListener.commandsExecuted.getAction()).toEqual(IS.Commands.ICommand.ACTIONS.EXECUTE);
+      expect(this.dummyListener.commandsExecuted.getAction()).toEqual(IS.Commands.ExecutedEvent.ACTIONS.EXECUTE);
     });
 
     it("increases undo count", function() {
@@ -117,7 +117,7 @@ describe("IS.Commands.History", function() {
     });
 
     it("schedules a notification with undo to listeners", function() {
-      expect(this.dummyListener.commandsExecuted.getAction()).toEqual(IS.Commands.ICommand.ACTIONS.UNDO);
+      expect(this.dummyListener.commandsExecuted.getAction()).toEqual(IS.Commands.ExecutedEvent.ACTIONS.UNDO);
     });
 
     it("descrease undo count", function() {
@@ -146,7 +146,7 @@ describe("IS.Commands.History", function() {
     });
 
     it("schedules a notification with undo to listeners", function() {
-      expect(this.dummyListener.commandsExecuted.getAction()).toEqual(IS.Commands.ICommand.ACTIONS.REDO);
+      expect(this.dummyListener.commandsExecuted.getAction()).toEqual(IS.Commands.ExecutedEvent.ACTIONS.REDO);
     });
 
     it("increases undo count", function() {
