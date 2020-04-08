@@ -12,6 +12,13 @@ Fixed for any bug fixes.
 Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
+## [2.0.0] - 2020-04-08
+
+### Removed
+ - All Commands and deltas relating to StepData have been removed from this repository and were moved to the is-steps_tree repository.
+
+### Changed
+- The Command class has been reworked into an interface instead, called ICommand. Check the documentation of the interface to learn more.
 
 ## [1.0.11] - 2020-02-28
 
