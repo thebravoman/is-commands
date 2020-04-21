@@ -25,15 +25,15 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*","{tutorials}/**/*", "Changelog.md","jsdoc.conf", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", "~> 5.2.4", ">= 5.2.4.1"
+  spec.add_dependency "rails", ">= 5.2.4.1"
 
   spec.add_development_dependency "sqlite3"
 
-  spec.add_dependency "is-core", "~> 6.0.0.pre.84"
-  spec.add_development_dependency "is-core", "~> 6.0.0.pre.84"
+  spec.add_dependency "is-core", ">= 6.0.0.pre.84"
+  spec.add_development_dependency "is-core", ">= 6.0.0.pre.84"
 
-  spec.add_dependency "is-gcc_tools", ">= 1.2.7", "< 2.0"
-  spec.add_development_dependency "is-gcc_tools", ">= 1.2.7", "< 2.0"
+  spec.add_dependency "is-gcc_tools", ">= 1.2.7"
+  spec.add_development_dependency "is-gcc_tools", ">= 1.2.7"
 
   spec.add_development_dependency "teaspoon-jasmine"
   spec.add_development_dependency "selenium-webdriver"

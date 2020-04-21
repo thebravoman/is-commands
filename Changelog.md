@@ -12,6 +12,13 @@ Fixed for any bug fixes.
 Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
+
+## [2.0.1] - 2020-04-21
+
+### Removed
+
+- deps - remove upper limits
+
 ## [2.0.0] - 2020-04-08
 
 ### Removed
