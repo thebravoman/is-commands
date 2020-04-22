@@ -3,6 +3,8 @@ set -e
 
 # Prettier
 bundle exec rake app:is:pretty
+bundle exec rake app:is:extension_validation:validate
+
 
 cd test/dummy
 if [ -x "$(command -v xvfb-run)" ]; then

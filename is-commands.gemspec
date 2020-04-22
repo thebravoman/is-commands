@@ -27,6 +27,10 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", ">= 5.2.4.1"
 
+  spec.add_dependency "is-release_tools", ">= 1"
+  spec.add_development_dependency "is-release_tools", ">= 1"
+
+
   spec.add_development_dependency "sqlite3"
 
   spec.add_dependency "is-core", ">= 6.0.0.pre.84"
