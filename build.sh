@@ -3,7 +3,7 @@ set -e
 
 # Prettier
 bundle exec rake app:is:pretty
-bundle exec rake app:is:extension_validation:validate
+bundle exec rake app:is:validate_extension
 
 
 cd test/dummy
