@@ -1,11 +1,6 @@
 # Is::Commands
 Commands framework for Axles IS. See {@link IS.Commands}
 
-## Usage
-```html
-<script src=".../ext/commands/register_commands"> </script>
-```
-
 ## Installation
 Add this line to your application's Gemfile:
 

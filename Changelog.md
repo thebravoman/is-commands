@@ -13,6 +13,12 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [2.1.0] - 2020-07-20
+
+### Added
+
+- [undo/redo] Adding undo redo extension
+
 ## [2.0.3] - 2020-04-22
 ### Added
 - Started using is-release_tools
