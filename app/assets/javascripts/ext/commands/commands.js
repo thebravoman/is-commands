@@ -1,7 +1,8 @@
 if (typeof IS.Commands == "undefined") {
   /**
    * <h2>Overview</h2>
-   * The commands framework provides an abstraction for capsulating logic that changes the instructions. This abstraction allows for undo/redo of the changes.
+   * The commands framework provides an abstraction for capsulating logic that changes the instructions. T
+   * his abstraction allows for undo/redo of the changes.
    *
    * <h2>Events broadcasted</h2>
    * <ul>
