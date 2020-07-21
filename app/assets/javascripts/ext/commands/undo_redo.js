@@ -1,5 +1,7 @@
 //= require ext/commands/history
-//= requrre ext/commands/executed_event
+//= require ext/commands/executed_event
+//= require ext/commands/i_humanizable
+
 /**
  * <p>Undo/Redo buttons</p>
  *
@@ -28,6 +30,7 @@ IS.Commands.UndoRedo = class extends IS.Extension {
     this._historyService = /** @type {IS.Commands.History} */ (this.getCore()
       .getExtensionDefsForService(IS.Commands.History.SERVICE_TYPE)[0]
       .getExtension());
+
     if (this.getUndoElement()) {
       this.getUndoElement().addEventListener("click", () => {
         this._historyService.undo();
@@ -53,12 +56,8 @@ IS.Commands.UndoRedo = class extends IS.Extension {
    * @private
    */
   setButtonsStyle() {
-    if (this.getUndoElement()) {
-      this.getUndoElement().disabled = this._historyService.getUndoCount() == 0;
-    }
-    if (this.getRedoElement()) {
-      this.getRedoElement().disabled = this._historyService.getRedoCount() == 0;
-    }
+    this.updateButtonElement(this.getUndoElement(), this._historyService.getUndoCount() == 0, -1);
+    this.updateButtonElement(this.getRedoElement(), this._historyService.getRedoCount() == 0, 0);
   }
 
   /**
@@ -75,5 +74,35 @@ IS.Commands.UndoRedo = class extends IS.Extension {
    */
   getRedoElement() {
     return document.getElementById("is-redo");
+  }
+
+  /**
+   * @private
+   * @param  {Element} element         [description]
+   * @param  {boolean} disabled        [description]
+   * @param  {number} commandPosition [description]
+   */
+  updateButtonElement(element, disabled, commandPosition) {
+    if (element) {
+      element.disabled = disabled;
+      if (!disabled) {
+        element.title = this.getCommandsTitle(commandPosition);
+      }
+    }
+  }
+
+  /**
+   * @private
+   * @param {number} relativePosition
+   * @return {string} the title of the commands
+   */
+  getCommandsTitle(relativePosition) {
+    const commands = this._historyService.getCommandArrays()[this._historyService.getPosition() + relativePosition];
+    return commands
+      .map(command => {
+        const humanizable = /** @type {IS.Commands.IHumanizable} */ (command);
+        return humanizable.toHumanized ? humanizable.toHumanized()["title"] : "(unhumanized command)";
+      })
+      .join("; ");
   }
 };

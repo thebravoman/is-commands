@@ -135,6 +135,24 @@ IS.Commands.History = class extends IS.Extension {
   }
 
   /**
+   * @export
+   * @return {number} the position at which the next command will be put when executed.
+   */
+  getPosition() {
+    return this._position;
+  }
+
+  /**
+   * @export
+   * @return {Array<Array<IS.Commands.ICommand>>} the command arrays in the history in the ordered in which they were executed or empty array if there
+   * are no commands executed
+   * @see {IS.Commands.History#getPosition}
+   */
+  getCommandArrays() {
+    return this._commandArrays.slice(0, this._commandArrays.length);
+  }
+
+  /**
    * @private
    */
   scheduleNotify(commands, action) {

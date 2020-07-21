@@ -162,4 +162,21 @@ describe("IS.Commands.History", function() {
       this.commandsHistory.redo();
     });
   });
+
+  it("getPosition return the current position ", function() {
+    expect(this.commandsHistory.getPosition()).toEqual(0);
+    this.commandsHistory.execute([this.command1]);
+    expect(this.commandsHistory.getPosition()).toEqual(1);
+    this.commandsHistory.undo();
+    expect(this.commandsHistory.getPosition()).toEqual(0);
+  });
+
+  it("getCommandArrays returns a shallow copy of the commands", function() {
+    expect(this.commandsHistory.getCommandArrays()).toEqual([]);
+    this.commandsHistory.execute([this.command1]);
+    expect(this.commandsHistory.getCommandArrays()).toEqual([[this.command1]]);
+    const copy = this.commandsHistory.getCommandArrays();
+    copy[0] = null; //this should not change the array
+    expect(this.commandsHistory.getCommandArrays()).toEqual([[this.command1]]);
+  });
 });

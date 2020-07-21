@@ -13,6 +13,12 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [2.1.3] - 2020-07-21
+
+### Fixed
+
+- [undo/redo] Adding title to the buttons. Introducing the experimental {@link IS.Commands.IHumanizable}
+
 ## [2.1.2] - 2020-07-21
 
 ### Fixed
