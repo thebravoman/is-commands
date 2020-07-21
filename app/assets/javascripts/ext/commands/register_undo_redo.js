@@ -10,6 +10,9 @@ IS.AxlesIS.GetInstance().addExtensionDefs(() => {
         "events": {
           "coreInit": {
             "receivesWith": undoRedo.onCoreInit
+          },
+          "commandsExecuted": {
+            "receivesWith": undoRedo.onCommandsExecuted
           }
         }
       },

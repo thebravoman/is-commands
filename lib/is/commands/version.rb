@@ -1,5 +1,5 @@
 module Is
   module Commands
-    VERSION = '2.1.1'
+    VERSION = '2.1.2'
   end
 end

@@ -1,4 +1,5 @@
 //= require ext/commands/history
+//= requrre ext/commands/executed_event
 /**
  * <p>Undo/Redo buttons</p>
  *
@@ -30,22 +31,28 @@ IS.Commands.UndoRedo = class extends IS.Extension {
     if (this.getUndoElement()) {
       this.getUndoElement().addEventListener("click", () => {
         this._historyService.undo();
-        this.setDisabledStyles();
       });
     }
     if (this.getRedoElement()) {
       this.getRedoElement().addEventListener("click", () => {
         this._historyService.redo();
-        this.setDisabledStyles();
       });
     }
-    this.setDisabledStyles();
+    this.setButtonsStyle();
+  }
+
+  /**
+   * @private
+   * @param  {IS.Commands.ExecutedEvent} event
+   */
+  onCommandsExecuted(event) {
+    this.setButtonsStyle();
   }
 
   /**
    * @private
    */
-  setDisabledStyles() {
+  setButtonsStyle() {
     if (this.getUndoElement()) {
       this.getUndoElement().disabled = this._historyService.getUndoCount() == 0;
     }

@@ -13,6 +13,12 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [2.1.2] - 2020-07-21
+
+### Fixed
+
+- [undo/redo] Listening to commands events and enabling and disabling the buttons then.
+
 ## [2.1.1] - 2020-07-21
 
 ### Added

@@ -37,6 +37,9 @@ describe("IS.Commands.UndoRedo", function() {
           "events": {
             "coreInit": {
               "receivesWith": this.undoRedo.onCoreInit
+            },
+            "commandsExecuted": {
+              "receivesWith": this.undoRedo.onCommandsExecuted
             }
           }
         },
@@ -69,5 +72,15 @@ describe("IS.Commands.UndoRedo", function() {
   it("sets initial disabled styles", function() {
     expect(document.getElementById("is-undo").disabled).toEqual(true);
     expect(document.getElementById("is-redo").disabled).toEqual(true);
+  });
+
+  it("sets styles after executing an event is received for executed commands", function() {
+    this.history.execute([this.command1]);
+    expect(document.getElementById("is-undo").disabled).toEqual(false);
+    expect(document.getElementById("is-redo").disabled).toEqual(true);
+
+    this.history.undo();
+    expect(document.getElementById("is-undo").disabled).toEqual(true);
+    expect(document.getElementById("is-redo").disabled).toEqual(false);
   });
 });
