@@ -56,9 +56,18 @@ describe("IS.Commands.UndoRedo", function() {
     document.getElementById("is-undo").click();
     expect(this.history.getUndoCount()).toEqual(0);
     expect(this.history.getRedoCount()).toEqual(1);
+    expect(document.getElementById("is-undo").disabled).toEqual(true);
+    expect(document.getElementById("is-redo").disabled).toEqual(false);
 
     document.getElementById("is-redo").click();
     expect(this.history.getUndoCount()).toEqual(1);
     expect(this.history.getRedoCount()).toEqual(0);
+    expect(document.getElementById("is-undo").disabled).toEqual(false);
+    expect(document.getElementById("is-redo").disabled).toEqual(true);
+  });
+
+  it("sets initial disabled styles", function() {
+    expect(document.getElementById("is-undo").disabled).toEqual(true);
+    expect(document.getElementById("is-redo").disabled).toEqual(true);
   });
 });
