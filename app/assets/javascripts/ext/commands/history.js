@@ -1,6 +1,6 @@
 //= require ext/commands/commands
 //= require ext/commands/i_command
-
+//= require ext/commands/executed_event
 /**
  * <p>IS.Commands.History is an extension providing the service for keeping the history of executed commands and being
  * able to undo/redo those commands. You can ask the service to execute any class which implements the {@link IS.Commands.ICommand} interface.</p>

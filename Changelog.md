@@ -13,6 +13,12 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [2.1.4] - 2020-07-30
+
+### Fixed
+
+- [history] In now requires ExecutedEvent to prevent GCC compilation warnings errors in classes dependent on {@link IS.Commands.History} 
+
 ## [2.1.3] - 2020-07-21
 
 ### Fixed
