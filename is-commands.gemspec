@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*","{tutorials}/**/*", "Changelog.md","jsdoc.conf", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", ">= 5.2.4.1"
+  spec.add_dependency "rails", "~> 6.0"
 
   spec.add_dependency "is-release_tools", ">= 1"
   spec.add_development_dependency "is-release_tools", ">= 1"

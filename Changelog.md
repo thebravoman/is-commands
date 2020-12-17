@@ -13,6 +13,12 @@ Security to invite users to upgrade in case of vulnerabilities.
 
 ## [Unreleased]
 
+## [2.1.5] - 2020-12-17
+
+### Fixed
+
+- [rails] 6.0 because of jenkins 
+
 ## [2.1.4] - 2020-07-30
 
 ### Fixed
