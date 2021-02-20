@@ -1,19 +1,18 @@
 //= require ext/commands/commands
 
 /**
- * Interface which provides a blueprint for all classes that want to be commands.
- * Commands could be executed and then redo/undo could be called on them.
- * We leave it entirely to the imagination of the developer to decide on whether his command should keep track of the changes made by it via a delta,
- * for example, and how that delta is implemented.
+ * Interface for Commands.
+ * A command capsulates the behaviour and the and the state of a change in a model.
  *
  * @export
  * @interface
- * @author  Dimitar Lukanov
  */
 IS.Commands.ICommand = function() {};
 
 /**
  * Execute the command
+ * The method should be called **only onse**. It allows for the command
+ * to save the state for when it will be undone
  */
 IS.Commands.ICommand.prototype.execute = function() {};
 
